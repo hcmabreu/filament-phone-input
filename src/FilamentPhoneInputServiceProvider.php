@@ -20,13 +20,18 @@ class FilamentPhoneInputServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
+        FilamentAsset::registerCssVariables([
+            'filament-phone-input-flags' => global_asset("images/{$this->package->shortName()}/flags.png"),
+            'filament-phone-input-flags-2x' => global_asset("images/{$this->package->shortName()}/flags@2x.png"),
+        ]);
+        
         FilamentAsset::register([
             Css::make('filament-phone-input', __DIR__ . '/../dist/css/filament-phone-input.css')->loadedOnRequest(),
             AlpineComponent::make('filament-phone-input', __DIR__ . '/../dist/js/filament-phone-input.js'),
         ], package: 'ysfkaya/filament-phone-input');
 
         $this->publishes([
-            $this->package->basePath('/../images/vendor/intl-tel-input/build') => public_path("vendor/{$this->package->shortName()}"),
+            $this->package->basePath('/../images/vendor/intl-tel-input/build') => resource_path("images/{$this->package->shortName()}"),
         ], "{$this->package->shortName()}-assets");
 
         // These routes will be deprecated in the next major release.
