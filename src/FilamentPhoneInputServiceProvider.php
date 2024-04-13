@@ -21,8 +21,8 @@ class FilamentPhoneInputServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         FilamentAsset::registerCssVariables([
-            'filament-phone-input-flags' => global_asset("img/{$this->package->shortName()}/flags.png"),
-            'filament-phone-input-flags-2x' => global_asset("img/{$this->package->shortName()}/flags@2x.png"),
+            'filament-phone-input-flags' => asset("img/{$this->package->shortName()}/flags.png"),
+            'filament-phone-input-flags-2x' => asset("img/{$this->package->shortName()}/flags@2x.png"),
         ]);
         
         FilamentAsset::register([
