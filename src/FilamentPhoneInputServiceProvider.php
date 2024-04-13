@@ -8,6 +8,7 @@ use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Support\Facades\Vite;
 
 class FilamentPhoneInputServiceProvider extends PackageServiceProvider
 {
@@ -21,8 +22,8 @@ class FilamentPhoneInputServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         FilamentAsset::registerCssVariables([
-            'filament-phone-input-flags' => asset("img/{$this->package->shortName()}/flags.png"),
-            'filament-phone-input-flags-2x' => asset("img/{$this->package->shortName()}/flags@2x.png"),
+            'filament-phone-input-flags' => Vite::asset('resources/img/'.$this->package->shortName().'/flags.png'),
+            'filament-phone-input-flags-2x' => Vite::asset('resources/img/'.$this->package->shortName().'/flags@2x.png'),
         ]);
         
         FilamentAsset::register([
